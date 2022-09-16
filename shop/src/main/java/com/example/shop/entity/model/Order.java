@@ -47,11 +47,7 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<OrderDetails> orderDetailsList;
 
-   // public Order(User user) {
-       // this.orderDate = LocalDate.now();
-       // this.user = user;
-       // this.products = new ArrayList<>();
-    }
+}
 
 
 

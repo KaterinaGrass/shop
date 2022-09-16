@@ -66,11 +66,6 @@ public class CategoryServiceImpl implements CategoryService {
         category.setActive(true);
         category.setDeleted(false);
         categoryRepository.save(category);
-
     }
 
-   // @Override
-   // public List<Category> findAllByActive() {
-       // return categoryRepository.findAllByActive();
-  //  }
 }

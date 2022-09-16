@@ -1,5 +1,6 @@
 package com.example.shop.service;
 
+
 import com.example.shop.entity.model.Category;
 
 import java.util.List;
@@ -12,5 +13,5 @@ Category findById (Integer id);
 Category update (Category category);
 void deleteById (Integer id);
 void enabledById (Integer id);
-//List<Category> findAllByActive();
+
 }

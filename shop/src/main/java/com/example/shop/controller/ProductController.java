@@ -44,20 +44,6 @@ public class ProductController {
         return "products";
     }
 
-  //  @GetMapping("/search-result/{pageNo}")
-   // public String searchProducts(@PathVariable("pageNo")int pageNo,
-                              //   @RequestParam("keyword") String keyword,
-                               //  Model model){
-
-      //  Page<ProductDto> products = productService.searchProducts(pageNo, keyword);
-       // model.addAttribute("title", "Search Result");
-      //  model.addAttribute("products", products);
-       // model.addAttribute("size", products.getSize());
-       // model.addAttribute("currentPage", pageNo);
-       // model.addAttribute("totalPages", products.getTotalPages());
-      //  return "result-products";
-  //  }
-
 
     @GetMapping("/add-product")
     public String addProductForm(Model model){
@@ -135,10 +121,32 @@ public class ProductController {
         return "redirect:/products";
     }
 
+
     @GetMapping(value = "/products-shop")
     private String productsShop(Model model){
         List<Product>products = productService.getAllProducts();
+        List<Product> listViewProducts = productService.listViewProducts();
+        model.addAttribute("viewProducts", listViewProducts);
         model.addAttribute("products", products);
         return "shop";
+    }
+
+    @GetMapping(value = "/find-product/{id}")
+    public String findProductById (@PathVariable("id") Integer id,Model model){
+        Product product = productService.getProductById(id);
+        Integer categoryId = product.getCategory().getId();
+        List<Product> products = productService.getRelatedProducts(categoryId);
+        model.addAttribute("product", product);
+        model.addAttribute("products", products);
+        return "product-detail";
+    }
+
+    @GetMapping(value = "/high-price")
+    public String filterHighPrice(Model model){
+        List<Category> categories = categoryService.findByAll();
+        List<Product> products = productService.filterHighPrice();
+        model.addAttribute("products", products);
+        model.addAttribute("categories", categories);
+        return "filter-high-price";
     }
 }

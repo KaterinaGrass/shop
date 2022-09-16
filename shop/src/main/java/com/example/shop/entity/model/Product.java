@@ -35,9 +35,7 @@ public class Product {
     private boolean deleted;
     @Column
     private boolean active;
-    //@ManyToOne (cascade = CascadeType.MERGE)
-   // @JoinColumn(name = "category_id")
-   // @JsonBackReference
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;

@@ -1,7 +1,6 @@
 package com.example.shop.service;
 
 import com.example.shop.entity.dto.ProductDto;
-import com.example.shop.entity.model.Category;
 import com.example.shop.entity.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +20,12 @@ public interface ProductService {
 
 /*User*/
     List<Product> getAllProducts();
+    List<Product> listViewProducts();
+    Product getProductById(Integer id);
+    List<Product> getRelatedProducts(Integer categoryId);
+    List<Product> filterHighPrice();
+    List<Product> filterLowPrice();
+
 
 
 

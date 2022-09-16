@@ -25,9 +25,8 @@ public class Category {
     private boolean deleted;
     @Column
     private boolean active;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")//
-   // @JsonIgnore
-  //  @JsonManagedReference
     private List<Product> products;
 
     public Category (String title){

@@ -42,11 +42,29 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="login-box">
+          </li>
+          <div sec:authorize="isAuthenticated()">
+            <div>
+              WELCOME,<span sec:authentication="principal.username"></span>
+            </div>
+          </div>
+
+          <div sec:authorize="!isAuthenticated()">
+            <div>
+              Please, <a th:href="@{/login}">Login</a>
+            </div>
+          </div>
+          <form action="/logout" method="post" sec:authorize="isAuthenticated()">
+            <input type="submit" class="bg-black" style="color:white" value="Выход"/>
+          </form>
+          <div>
+            <a th:href="@{/register}">Sign up</a>
+          </div>
           <select id="" class="selectpicker show-tick form-control" data-placeholder="Sign In" onchange="location = this.value;">
             <option th:text="${session.username != null} ? ${session.username} : 'Authentication'"></option>
-            <option th:if = "${session.username == null}" value="http://localhost:8020/shop/login">Sign In</option>
-            <option th:if = "${session.username != null}" value="http://localhost:8020/shop/logout">Log out</option>
-            <option value="http://localhost:8020/shop/register" >Sign Up</option>
+            <option th:if = "${session.username == null}" value="http://localhost:8024/shop/login">Sign In</option>
+            <option th:if = "${session.username != null}" value="http://localhost:8024/shop/logout">Log out</option>
+            <option value="http://localhost:8024/shop/register" >Sign Up</option>
           </select>
         </div>
         <div class="text-slid-box">
@@ -103,17 +121,19 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-          <li class="nav-item"><a class="nav-link"th:href="@{/}">Home</a></li>
+          <li class="nav-item"><a class="nav-link"th:href="@{/shop}">Home</a></li>
           <li class="nav-item active"><a class="nav-link" th:href="@{/home}">Menu</a></li>
+          <li class="nav-item active"><a class="nav-link" th:href="@{/account}">Account</a></li>
 
           <li class="dropdown">
             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Shop</a>
             <ul class="dropdown-menu">
-              <li><a th:href="@{/products}">Shop Detail</a></li>
+              <li><a th:href="@{/products-shop}">Shop Detail</a></li>
               <li><a href="product-detail.html">Product Detail</a></li>
               <li><a href="cart.html">Cart</a></li>
               <li><a href="checkout.html">Checkout</a></li>
               <li><a th:href="@{/account}">My Account</a></li>
+              <li><a th:href="@{/order}">My order</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
@@ -148,7 +168,7 @@
             <p>1 - <span class="price">$80.00</span></p>
           </li>
           <li>
-            <a href="#" class="photo"><img th:src="@{/images/Octopus 05 - Octopus with Black Bean Pear Sauce.jpg}"
+            <a href="#" class="photo"><img th:src="@{/images/Octopus 04 - Pan-Seared Octopus with Italian Vegetable Salad.jpg}"
                                            class="cart-thumb" alt=""/></a>
             <h6><a href="#">Octopus with Black Bean</a></h6>
             <p>1 - <span class="price">$60.00</span></p>
@@ -176,8 +196,8 @@
       <span>Sort by </span>
       <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD" onchange="location = this.value;">
         <option data-display="Select">Nothing</option>
-        <option value="http://localhost:8020/shop/high-price">High Price → Low Price</option>
-        <option value="http://localhost:8020/shop/low-price">Low Price → High Price</option>
+        <option value="http://localhost:8024/shop/high-price">High Price → Low Price</option>
+        <option value="http://localhost:8024/shop/low-price">Low Price → High Price</option>
         <option data-display="Select">Best Selling</option>
       </select>
     </div>
@@ -250,7 +270,7 @@
     </div>
     <div class="item">
       <div class="ins-inner-box">
-        <a href="index.html"><img th:src="@{/images/Shrimp 03 - Shrimp Tostadas with Avocado Salsa.jpg}" alt=""/></a>
+        <a href="index.html"><img th:src="@{/images/Shrimp 04 - Popcorn Shrimp Tacos with Cabbage Slaw.jpg}" alt=""/></a>
       </div>
     </div>
     <div class="item">
@@ -261,7 +281,7 @@
     </div>
     <div class="item">
       <div class="ins-inner-box">
-        <a href="index.html"><img th:src="@{/images/Octopus 06 - Red Wine–Braised Baby Octopus with Black Olives.jpg}"
+        <a href="index.html"><img th:src="@{/images/Octopus 08 - Charred Octopus with Jicama Salad and Paste.jpg}"
                                   alt=""/></a>
       </div>
     </div>
