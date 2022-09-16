@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="login-block">
+        <form th:action="@{/do-login}" method ="post">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+                    <input type="text" class="form-control" name="username" placeholder="Ваш логин">
+                </div>
+            </div>
+            <hr class="hr-xs">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+                    <input type="password" class="form-control" name="password" placeholder="Ваш пароль">
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">ВОЙТИ НА САЙТ</button>
+            <p th:if="${loginError}" class="error">Wrong username or password</p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
