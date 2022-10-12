@@ -1,9 +1,9 @@
 package com.example.shop.service.impl;
 
-import com.example.shop.entity.Repository.CartItemRepository;
-import com.example.shop.entity.Repository.CartRepository;
-import com.example.shop.entity.Repository.OrderDetailsRepository;
-import com.example.shop.entity.Repository.OrderRepository;
+import com.example.shop.entity.repository.CartItemRepository;
+import com.example.shop.entity.repository.CartRepository;
+import com.example.shop.entity.repository.OrderDetailsRepository;
+import com.example.shop.entity.repository.OrderRepository;
 import com.example.shop.entity.model.Cart;
 import com.example.shop.entity.model.CartItem;
 import com.example.shop.entity.model.Order;

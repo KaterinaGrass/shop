@@ -1,6 +1,6 @@
 package com.example.shop.service.impl;
 
-import com.example.shop.entity.Repository.CategoryRepository;
+import com.example.shop.entity.repository.CategoryRepository;
 import com.example.shop.entity.model.Category;
 import com.example.shop.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -66,6 +66,11 @@ public class CategoryServiceImpl implements CategoryService {
         category.setActive(true);
         category.setDeleted(false);
         categoryRepository.save(category);
+    }
+
+    @Override
+    public List<Category> findAllByActivated() {
+        return categoryRepository.findAllByActivated();
     }
 
 }

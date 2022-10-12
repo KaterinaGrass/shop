@@ -13,5 +13,6 @@ Category findById (Integer id);
 Category update (Category category);
 void deleteById (Integer id);
 void enabledById (Integer id);
+List<Category> findAllByActivated();
 
 }

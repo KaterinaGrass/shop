@@ -11,6 +11,6 @@ public class CategoryDto {
 
     private Integer categoryId;
     private String categoryTitle;
-    private  Integer numberOfProduct;
+    private Integer numberOfProduct;
 
 }

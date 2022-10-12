@@ -34,7 +34,6 @@ public class CartController {
         if (cart == null){
             model.addAttribute("check","No item in your cart");
         }
-      //  session.getAttribute("totalItems",cart.getTotalItems());
         model.addAttribute("subTotal", cart.getTotalPrice());
         model.addAttribute("cart", cart);
         return "cart";

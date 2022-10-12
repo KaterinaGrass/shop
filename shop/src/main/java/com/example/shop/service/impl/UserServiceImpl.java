@@ -1,11 +1,10 @@
 package com.example.shop.service.impl;
 
-import com.example.shop.entity.Repository.UserRepository;
+import com.example.shop.entity.repository.UserRepository;
 import com.example.shop.entity.dto.UserDto;
 import com.example.shop.entity.enam.Role;
 import com.example.shop.entity.model.User;
 import com.example.shop.service.UserService;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

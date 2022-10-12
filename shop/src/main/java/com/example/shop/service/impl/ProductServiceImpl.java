@@ -1,6 +1,6 @@
 package com.example.shop.service.impl;
 
-import com.example.shop.entity.Repository.ProductRepository;
+import com.example.shop.entity.repository.ProductRepository;
 import com.example.shop.entity.dto.ProductDto;
 import com.example.shop.entity.model.Product;
 import com.example.shop.service.ProductService;

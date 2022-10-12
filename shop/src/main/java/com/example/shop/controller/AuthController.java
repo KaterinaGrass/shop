@@ -32,7 +32,9 @@ public class AuthController {
 
 
     @PostMapping("/do-register")
-    public String saveUser(@Valid UserDto userDto, BindingResult bindingResult, Model model) {
+    public String saveUser(@Valid UserDto userDto,
+                           BindingResult bindingResult,
+                           Model model) {
         if (bindingResult.hasErrors()) {
             return "error";
         }

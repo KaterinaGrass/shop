@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -18,8 +19,10 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/categories")
-    public String categories(Model model){
-
+    public String categories(Model model, Principal principal){
+        if(principal == null) {
+            return "redirect:/login";
+        }
         List<Category> categories = categoryService.findByAll();
         model.addAttribute("categories", categories);
         model.addAttribute("size", categories.size());

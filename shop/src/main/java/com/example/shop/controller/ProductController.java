@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -23,8 +24,10 @@ public class ProductController {
     private final CategoryService categoryService;
 
     @GetMapping("/products")
-    public String products(Model model){
-
+    public String products(Model model, Principal principal){
+        if(principal == null){
+            return "redirect:/login";
+        }
         List<ProductDto> productDtoList = productService.findByAll();
         model.addAttribute("title", "Manage Product");
         model.addAttribute("products", productDtoList);
@@ -33,8 +36,10 @@ public class ProductController {
     }
 
     @GetMapping("/products/{pageNo}")
-    public String productsPage(@PathVariable("pageNo") int pageNo, Model model){
-
+    public String productsPage(@PathVariable("pageNo") int pageNo, Model model, Principal principal){
+        if(principal == null){
+            return "redirect:/login";
+        }
         Page<Product> products = productService.pageProduct(pageNo);
         model.addAttribute("title", "Manage Product");
         model.addAttribute("size", products.getSize());
@@ -46,9 +51,11 @@ public class ProductController {
 
 
     @GetMapping("/add-product")
-    public String addProductForm(Model model){
-
-        List<Category> categories = categoryService.findByAll();
+    public String addProductForm(Model model, Principal principal){
+        if(principal == null){
+            return "redirect:/login";
+        }
+        List<Category> categories = categoryService.findAllByActivated();
         model.addAttribute("categories", categories);
         model.addAttribute("product", new ProductDto());
         return "add-product";
@@ -69,10 +76,12 @@ public class ProductController {
     }
 
     @GetMapping("/update-product/{id}")
-    public String updateProductForm(@PathVariable("id") Integer id, Model model){
-
+    public String updateProductForm(@PathVariable("id") Integer id, Model model, Principal principal){
+        if(principal == null){
+            return "redirect:/login";
+        }
         model.addAttribute("title", "Update products");
-        List<Category> categories = categoryService.findByAll();
+        List<Category> categories = categoryService.findAllByActivated();
         ProductDto productDto = productService.getById(id);
         model.addAttribute("categories", categories);
         model.addAttribute("productDto", productDto);
