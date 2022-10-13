@@ -138,6 +138,10 @@ public class ProductServiceImpl implements ProductService {
         return productPage;
     }
 
+    @Override
+    public List<Product> getProductsInCategory(Integer categoryId) {
+        return productRepository.getProductsInCategory(categoryId);
+    }
 
 
     @Override

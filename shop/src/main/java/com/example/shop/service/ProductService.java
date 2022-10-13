@@ -15,8 +15,8 @@ public interface ProductService {
     void deleteById (Integer id);
     void enabledById (Integer id);
     ProductDto getById (Integer id);
-
     Page<Product> pageProduct(int pageNo);
+    List<Product> getProductsInCategory(Integer categoryId);
 
 /*User*/
     List<Product> getAllProducts();

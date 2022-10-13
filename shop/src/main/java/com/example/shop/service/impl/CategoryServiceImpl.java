@@ -1,5 +1,6 @@
 package com.example.shop.service.impl;
 
+import com.example.shop.entity.dto.CategoryDto;
 import com.example.shop.entity.repository.CategoryRepository;
 import com.example.shop.entity.model.Category;
 import com.example.shop.service.CategoryService;
@@ -71,6 +72,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> findAllByActivated() {
         return categoryRepository.findAllByActivated();
+    }
+
+    @Override
+    public List<CategoryDto> getCategoryAndProduct() {
+        return categoryRepository.getCategoryAndProduct();
     }
 
 }

@@ -32,4 +32,8 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     @Query("select p from Product p where p.active = true and p.deleted = false order by p.coastPrice")
     List<Product> filterLowPrice();
 
+    @Query(value = "select p from Product p inner join Category c on c.id = p.category.id where c.id = ?1 " +
+            "and p.deleted = false and p.active = true")
+    List<Product> getProductsInCategory(Integer categoryId);
+
 }
