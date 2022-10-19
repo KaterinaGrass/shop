@@ -39,7 +39,7 @@ public class CartController {
         return "cart";
     }
 
-    @PostMapping (value = "/dd-to-cart")
+    @PostMapping (value = "/add-to-cart")
     public String addItemToCart(
             @RequestParam("id") Integer productId,
             @RequestParam(value = "quantity", required = false, defaultValue = "1") int quantity,

@@ -30,7 +30,6 @@ public class AuthController {
         return "register";
     }
 
-
     @PostMapping("/do-register")
     public String saveUser(@Valid UserDto userDto,
                            BindingResult bindingResult,

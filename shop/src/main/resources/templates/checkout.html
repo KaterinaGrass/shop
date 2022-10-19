@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <!-- Basic -->
 
 <head th:replace="fragments::head">
@@ -37,22 +37,21 @@
                     <div class="title-left">
                         <h3>Billing address</h3>
                     </div>
+                    <form class="needs-validation" novalidate th:object="${user}">
                     <div class="mb-3">
-                        <label >Username *</label>
-                      <!--  <p th:text="${user.username}" >-->
-                            <p type="text " name="user.username">
+                        <label for="username">Username *</label>
+                        <div class="input-group">
+                        </div>
+                        <p th:text="${user.username}" id="username">
                     </div>
                     <div class="mb-3">
-                        <label >Phone Number *</label>
-                      <!--  <p id="phone" th:text="${user.phoneNumber}">-->
-                        <p type="text" name="user.phoneNumber">
-                    </div>
+                        <label for="phone">Phone Number *</label>
+                        <div class="input-group">
+                            <p id="phone" th:text="${user.phoneNumber}">
+                        </div>
                     <div class="mb-3">
-                        <label >Address *</label>
-                     <!--   <p th:text="${user.address + ' ' + user.city + ' ' + user.country}" id="address">-->
-                        <p type="text" name="user.address">
-                        <p type="text" name="user.city">
-                        <p type="text" name="user.country">
+                        <label for="address">Address *</label>
+                       <p th:text="${user.address + ' ' + user.city + ' ' + user.country}" id="address">
                     </div>
                     <hr class="mb-4">
                     <hr class="mb-4">
@@ -65,6 +64,7 @@
                         </div>
                     </div>
                     <hr class="mb-1">
+                    </form>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-6 mb-3">
@@ -74,7 +74,13 @@
                             <h3>Shopping cart</h3>
                         </div>
                         <div class="rounded p-2 bg-light">
-
+                            <div class="media mb-2 border-bottom" th:each="item:${cart.cartItem}">
+                                <div class="media-body"><a href="product-detail.html" th:text="${item.product.title}"></a>
+                                    <div class="small text-muted">Price: $[[${item.product.coastPrice}]]<span class="mx-2">|</span>
+                                        Qty: [[${item.quantity}]]<span class="mx-2">|</span>Subtotal: [[${cart.totalPrice}]]
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +96,7 @@
                         <hr class="my-1">
                         <div class="d-flex">
                             <h4>Sub Total</h4>
-                          <!--  <div class="ml-auto font-weight-bold" th:text="${ '$' + cart.totalPrices}"></div>-->
+                            <div class="ml-auto font-weight-bold" th:text="${ '$' + cart.totalPrice}"></div>
                         </div>
                         <div class="d-flex">
                             <h4>Discount</h4>
@@ -113,7 +119,7 @@
                         <hr>
                     </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a th:href="@{/order}" class="ml-auto btn hvr-hover">Place Order</a></div>
+                <div class="col-12 d-flex shopping-box"><a th:href="@{/save-order}" class="ml-auto btn hvr-hover">Place Order</a></div>
             </div>
         </div>
     </div>

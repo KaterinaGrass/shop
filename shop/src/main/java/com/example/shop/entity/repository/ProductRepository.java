@@ -15,8 +15,9 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     @Query("select p from Product p")
     Page<Product> pageProduct(Pageable pageable);
 
+
     @Query("select p from Product p where p.active = true and p.deleted = false")
-    List<Product> getAllProducts ();
+    List<Product> getAllProducts();
 
     @Query(value = "select * from product p where p.deleted = false and p.active = true order by rand() asc limit 4",
             nativeQuery = true)

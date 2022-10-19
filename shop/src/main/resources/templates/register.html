@@ -39,15 +39,16 @@
             <div th:if = "${success}" class="text-center alert-success">
                 <p th:text="${success}"></p>
             </div>
-            <form th:action="@{/do-register}" method="post" th:object="${user}">
+            <form th:action="@{/do-register}" method="post" th:object="${userDto}">
                 <div class="input-form">
+
                     <!-- <span>User name</span> -->
-                    <input type="email " name="username"><br><br>
-                   <!-- <input type="email" th:field = "*{username}" placeholder="Username" name="">-->
+                    <input type="email " name="username"><br>Username<br>
+                   <!-- <input type="email" th:field = "*{username}" > -->
                 </div>
                 <div class="input-form">
                     <!-- <span>Password</span> -->
-                    <input type="password" name="password" ><br><br>
+                    <input type="password" name="password" ><br>Password<br>
                   <!--  <input type="password" th:field = "*{password}" placeholder="Password" name="">
                 </div>
                 <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}"
@@ -55,12 +56,12 @@
                 </div>
                 <div class="input-form">
                     <!-- <span>Password</span> -->
-                    <input type="password" name="repeatPassword" ><br><br>
+                    <input type="password" name="repeatPassword" ><br>Repeat password<br>
                   <!--  <input type="password" th:field = "*{repeatPassword}" placeholder="Verify password" name="">-->
                 </div>
                 <div class="input-form">
                     <!-- <span>Password</span> -->
-                    <input type="email" name="email" ><br><br>
+                    <input type="email" name="email" ><br>Email<br>
                     <!--  <input type="password" th:field = "*{repeatPassword}" placeholder="Verify password" name="">-->
                 </div>
                 <div class="input-form">
